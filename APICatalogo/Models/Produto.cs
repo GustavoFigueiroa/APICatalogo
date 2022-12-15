@@ -10,19 +10,19 @@ public class Produto
     [Key]
     public int ProdutoId { get; set; }
 
-    [Required]
+    [Required(ErrorMessage ="Campo nome é obrigatório", AllowEmptyStrings =false)]
     [StringLength(80)]
     public string? Nome { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Campo descrição é obrigatório", AllowEmptyStrings = false)]
     [StringLength(300)]
     public string? Descricao { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Campo preço é obrigatório", AllowEmptyStrings = false)]
     [Column(TypeName ="decimal(10,2)")]
     public decimal Preco { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Campo ImagemUrl é obrigatório", AllowEmptyStrings = false)]
     [StringLength(300)]
     public string? ImagemUrl { get; set; }
     public float Estoque { get; set; }

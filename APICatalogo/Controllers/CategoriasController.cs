@@ -46,15 +46,22 @@ namespace APICatalogo.Controllers
         [HttpPost]
         public ActionResult Post(Categoria categoria)
         {
-            if (categoria is null)
+            try
             {
-                return BadRequest();
+                if (categoria is null)
+                {
+                    return BadRequest();
+                }
+                _context.Categorias.Add(categoria);
+                _context.SaveChanges();
+
+                return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
             }
-
-            _context.Categorias.Add(categoria);
-            _context.SaveChanges();
-
-            return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
+            catch (Exception)
+            {
+                return BadRequest("Os item obrigatorios precisam ser inseridos");
+            }
+            
 
         }
 
