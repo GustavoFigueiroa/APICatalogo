@@ -21,7 +21,7 @@ namespace APICatalogo.Controllers
         {
             //return _context.Categorias.Include(p=> p.Produtos).AsNoTracking().ToList();
             //Forma mais otimizada
-            return _context.Categorias.Include(p => p.Produtos).Where(c => c.CategoriaId <= 5).AsNoTracking().ToList();
+            return _context.Categorias.Include(p => p.Produtos).AsNoTracking().ToList();
         }
 
         [HttpGet]
